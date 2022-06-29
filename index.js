@@ -14,10 +14,6 @@ const newsProviders = [
         address: "https://nakedsecurity.sophos.com"
     },
     {
-        name: 'Sophos Press',
-        address: 'https://www.sophos.com/en-us/company/press'
-    },
-    {
         name: 'Sophos News',
         address: 'https://news.sophos.com/en-us/'
     }
