@@ -11,11 +11,13 @@ const articles = []
 const newsProviders = [
     {
         name: 'Naked Security',
-        address: "https://nakedsecurity.sophos.com"
+        address: "https://nakedsecurity.sophos.com",
+        base: '',
     },
     {
         name: 'Sophos News',
-        address: 'https://news.sophos.com/en-us/'
+        address: 'https://news.sophos.com/en-us/',
+        base: '',
     }
 ]
 
