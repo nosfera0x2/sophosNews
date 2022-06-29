@@ -7,6 +7,22 @@ const app = express()
 const url = "https://news.sophos.com/en-us/"
 const articles = []
 
+
+const newsProviders = [
+    {
+        name: 'Naked Security',
+        address: "https://nakedsecurity.sophos.com"
+    },
+    {
+        name: 'Sophos Press',
+        address: 'https://www.sophos.com/en-us/company/press'
+    },
+    {
+        name: 'Sophos News',
+        address: 'https://news.sophos.com/en-us/'
+    }
+]
+
 newsProviders.forEach(newsProvider => {
     axios.get(newsProvider.address)
         .then(response => {
@@ -27,21 +43,6 @@ newsProviders.forEach(newsProvider => {
         })
 
 })
-
-const newsProviders = [
-    {
-        name: 'Naked Security',
-        address: "https://nakedsecurity.sophos.com"
-    },
-    {
-        name: 'Sophos Press',
-        address: 'https://www.sophos.com/en-us/company/press'
-    },
-    {
-        name: 'Sophos News',
-        address: 'https://news.sophos.com/en-us/'
-    }
-]
 
 app.get('/',(req,res) => {
         res.json('Welcome to my Sophos News API')
