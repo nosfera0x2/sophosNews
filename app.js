@@ -1,4 +1,4 @@
-const Port = 8000
+const Port = process.env.PORT || 8000
 const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
@@ -51,5 +51,28 @@ app.get('/sophos',(req,res) => {
     res.json(articles)
 })
 
+app.get('/sophos/:newsProviderId', (req,res) => {
+   const newsProviderId = req.params.newsProviderId
+   const newsProviderAddress = newsProviders.filter(newsProvider => newsProvider.name == newsProviderId)[0].address
+   const newsProviderBase = newsProviders.filter(newsProvider => newsProvider.name == newsProviderId)[0].base
+
+   axios.get(newsProviderAddress)
+   .then(response => {
+    const html = response.data
+    const $ = cheerio.load(html)
+    const specificArticles = []
+
+    $('a',html).each(function () {
+        const title = $(this).text()
+        const url = $(this).attr('href')
+        specificArticles.push({
+            title,
+            url: newsProviderBase + url,
+            source: newsProviderId
+        })
+    })
+    res.json(specificArticles)
+   }).catch(err => console.log(err))
+})
 
 app.listen(Port, () => console.log(`server running on Port ${Port}`))
