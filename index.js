@@ -2,9 +2,9 @@ const Port = process.env.PORT || 8000
 const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
-
 const app = express()
-const articles = []
+
+
 const newsProviders = [
     {
         name: 'Naked Security',
@@ -28,6 +28,8 @@ const newsProviders = [
     }
 ]
 
+const articles = []
+
 newsProviders.forEach(newsProvider => {
     axios.get(newsProvider.address)
         .then(response => {
@@ -36,7 +38,7 @@ newsProviders.forEach(newsProvider => {
             // if searching for a specific a tag with certain text
             // $('a:contains("climate")',html).each(function () { 
             $('a',html).each(function () {
-                const title = $(this).title
+                const title = $(this).text()
                 const url = $(this).attr('href')
 
                 articles.push({
