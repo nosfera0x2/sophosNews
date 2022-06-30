@@ -4,10 +4,7 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 const app = express()
-const url = "https://news.sophos.com/en-us/"
 const articles = []
-
-
 const newsProviders = [
     {
         name: 'Naked Security',
