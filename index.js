@@ -11,13 +11,23 @@ const articles = []
 const newsProviders = [
     {
         name: 'Naked Security',
-        address: "https://nakedsecurity.sophos.com",
-        base: '',
+        address: "https://nakedsecurity.sophos.com"
     },
     {
         name: 'Sophos News',
-        address: 'https://news.sophos.com/en-us/',
-        base: '',
+        address: 'https://news.sophos.com/en-us'
+    },
+    {
+        name: 'Cloud7',
+        address: 'https://cloud7.news/sophos'
+    },
+    {
+        name: 'BleepingComputer',
+        address: 'https://www.bleepingcomputer.com/tag/sophos'
+    },
+    {
+        name: 'infosecurity-magazine',
+        address: 'https://www.infosecurity-magazine.com/news'
     }
 ]
 
